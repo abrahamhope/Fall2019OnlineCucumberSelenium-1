@@ -23,6 +23,9 @@ public abstract class AbstractPageBase {
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver, 25);
 
+    @FindBy(css = "[class='btn-group pull-right'] > button")
+    private WebElement saveAndClose;
+
     @FindBy(css = "#user-menu > a")
     protected WebElement currentUser;
 
@@ -30,6 +33,10 @@ public abstract class AbstractPageBase {
         PageFactory.initElements(driver, this);
     }
 
+    public void clickOnSaveAndClose() {
+        BrowserUtilities.wait(3);
+        wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
+    }
 
     public String getCurrentUserName(){
         BrowserUtilities.waitForPageToLoad(10);
