@@ -24,10 +24,15 @@ public class CreateCarStepDefinitions {
         System.out.println(dataTable);
         for (Map<String, String> row : dataTable) {
             vehiclesPage.setLicencePlateInput(row.get("License Plate"));
+
             vehiclesPage.setDriverInput(row.get("Driver"));
+
             vehiclesPage.setLocationInput(row.get("Location"));
+
             vehiclesPage.setModelYear(row.get("Model Year"));
+
             vehiclesPage.setColor(row.get("Color"));
+            //click to save ne car
             vehiclesPage.clickOnSaveAndClose();
         }
     }
@@ -42,6 +47,5 @@ public class CreateCarStepDefinitions {
             Assert.assertEquals(row.get("Color"), vehiclesPage.getCarGeneralInfo("Color"));
         }
     }
-
 
 }

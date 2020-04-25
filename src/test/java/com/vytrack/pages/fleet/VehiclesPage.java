@@ -34,6 +34,7 @@ public class VehiclesPage extends AbstractPageBase {
     public void setLicencePlateInput(String licencePlate) {
         BrowserUtilities.waitForPageToLoad(20);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[name='custom_entity_type[LicensePlate]']")));
+        wait.until(ExpectedConditions.visibilityOf(licencePlateInput));
         licencePlateInput.sendKeys(licencePlate);
     }
 
@@ -43,6 +44,7 @@ public class VehiclesPage extends AbstractPageBase {
 
     public void setLocationInput(String location) {
         locationInput.sendKeys(location);
+        wait.until(ExpectedConditions.attributeToBe(locationInput, "value", location));
     }
 
     public void setModelYear(String year) {
@@ -57,10 +59,9 @@ public class VehiclesPage extends AbstractPageBase {
         submit.click();
     }
 
-
     public void clickToCreateCar() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(createCar)).click();
+        waitForLoaderMask();
     }
 
     public String getCarGeneralInfo(String parameter) {

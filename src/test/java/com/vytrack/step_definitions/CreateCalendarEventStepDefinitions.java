@@ -48,9 +48,8 @@ public class CreateCalendarEventStepDefinitions {
 
     @Then("user enters new calendar event information:")
     public void user_enters_new_calendar_event_information(Map<String, String> dataTable) {
-        calendarEventsPage.enterCalendarEventTitle(dataTable.get("title"));
         calendarEventsPage.enterCalendarEventDescription(dataTable.get("description"));
-
+        calendarEventsPage.enterCalendarEventTitle(dataTable.get("title"));
     }
 
     @Then("user verifies new calendar event was created successfully")
@@ -58,5 +57,4 @@ public class CreateCalendarEventStepDefinitions {
         Assert.assertEquals(dataTable.get("description"), calendarEventsPage.getGeneralInfoDescriptionText());
         Assert.assertEquals(dataTable.get("title"), calendarEventsPage.getGeneralInfoTitleText());
     }
-
 }

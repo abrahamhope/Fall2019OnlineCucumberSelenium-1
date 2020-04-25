@@ -15,7 +15,7 @@ public class LoginStepDefinitions {
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
         System.out.println("Open login page");
-        String URL = ConfigurationReader.getProperty("qa3");
+        String URL = ConfigurationReader.getProperty("qa1");
         Driver.getDriver().get(URL);
     }
 
@@ -63,8 +63,9 @@ public class LoginStepDefinitions {
         Assert.assertEquals(string, loginPage.getCurrentUserName());
     }
 
-    @When("user logs is as {string}")
-    public void user_logs_is_as(String userType) {
+
+    @When("user logs in as {string}")
+    public void user_logs_in_as(String userType) {
         loginPage.login(userType);
     }
 

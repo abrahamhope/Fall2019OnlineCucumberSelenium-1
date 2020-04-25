@@ -1,13 +1,11 @@
 package com.vytrack.pages.activities;
 
-
 import com.vytrack.pages.AbstractPageBase;
 import com.vytrack.utilities.BrowserUtilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.List;
 
 public class CalendarEventsPage extends AbstractPageBase {
@@ -51,9 +49,8 @@ public class CalendarEventsPage extends AbstractPageBase {
     @FindBy(xpath = "//*[contains(text(),'View per page:')]/following-sibling::*//a")
     private List<WebElement> viewPerPageElements;
 
-    @FindBy(css = "button[class^='btn dropdown-toggle']")
+    @FindBy(css = "button[class*='btn dropdown-toggle']")
     private WebElement viewPerPageToggle;
-
 
     public List<String> getViewPerPageOptions() {
         BrowserUtilities.waitForPageToLoad(20);
@@ -76,8 +73,6 @@ public class CalendarEventsPage extends AbstractPageBase {
         wait.until(ExpectedConditions.textToBePresentInElement(descriptionTextArea, description));
         driver.switchTo().defaultContent();//exit from the frame
     }
-
-
 
     public String getGeneralInfoTitleText() {
         BrowserUtilities.waitForPageToLoad(20);
